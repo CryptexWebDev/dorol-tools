@@ -16,10 +16,25 @@ GETH_MAC_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/0
 GETH_LINUX_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/0.1.0/geth-linux-amd64.tar.gz"
 # linux geth arm64
 GETH_LINUX_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/0.1.0/geth-linux-arm64.tar.gz"
-# prysm beacon chain mac
+# Prysm beacon chain mac amd64/arm64
 PRYSM_BEACON_CHAIN_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-darwin-amd64"
-# prysm beacon chain linux
-PRYSM_BEACON_CHAIN_LINUX=""
+PRYSM_BEACON_CHAIN_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-darwin-arm64"
+# Prysm beacon chain linux amd64/arm64
+PRYSM_BEACON_CHAIN_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-linux-amd64"
+PRYSM_BEACON_CHAIN_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-linux-arm64"
+# Prysm prysmctl mac amd64/arm64
+PRYSM_PRYSMCTL_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-darwin-amd64"
+PRYSM_PRYSMCTL_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-darwin-arm64"
+# Prysm prysmctl linux amd64/arm64
+PRYSM_PRYSMCTL_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-linux-amd64"
+PRYSM_PRYSMCTL_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-linux-arm64"
+# Prysm validator mac amd64/arm64
+PRYSM_VALIDATOR_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-darwin-amd64"
+PRYSM_VALIDATOR_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-darwin-arm64"
+# Prysm validator linux amd64/arm64
+PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-amd64"
+PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-arm64"
+
 
 NODE_OS="unknown"
 NODE_ARCH="unknown"
@@ -75,30 +90,36 @@ fi
 
 echo "Downloading node software..."
 GETH_DIST=""
+PRYSM_PRYSMCTL_DIST=""
+PRYSM_BEACON_CHAIN_DIST=""
+PRYSM_VALIDATOR_DIST=""
+DEPOSIT_CLI=""
 
 if [[ "$NODE_OS" == "linux" ]]; then
         if [[ "$NODE_ARCH" == "amd64" ]]; then
                 GETH_DIST=$GETH_LINUX_AMD64
+                PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_LINUX_AMD64
+                PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_LINUX_AMD64
+                PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_LINUX_AMD64
         elif [[ "$NODE_ARCH" == "arm64" ]]; then
                 GETH_DIST=$GETH_LINUX_ARM64
+                PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_LINUX_ARM64
+                PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_LINUX_ARM64
+                PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_LINUX_ARM64
         fi
 elif [[ "$NODE_OS" == "darwin" ]]; then
         if [[ "$NODE_ARCH" == "amd64" ]]; then
                 GETH_DIST=$GETH_MAC_AMD64
+                PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_MAC_AMD64
+                PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_MAC_AMD64
+                PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_MAC_AMD64
         elif [[ "$NODE_ARCH" == "arm64" ]]; then
                 GETH_DIST=$GETH_MAC_ARM64
+                PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_MAC_ARM64
+                PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_MAC_ARM64
+                PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_MAC_ARM64
         fi
 fi
-
-if [[ -z "$GETH_DIST" ]]; then
-        echo "Failed to determine Geth distribution"
-        exit 1
-fi
-
-echo "Downloading Geth from $GETH_DIST"
-curl -L -o geth.tar.gz $GETH_DIST
-
-DEPOSIT_CLI=""
 
 if [[ "$NODE_OS" == "linux" ]]; then
         DEPOSIT_CLI=$DEPOSIT_CLI_LINUX
@@ -106,14 +127,24 @@ elif [[ "$NODE_OS" == "darwin" ]]; then
         DEPOSIT_CLI=$DEPOSIT_CLI_MAC
 fi
 
+if [[ -z "$GETH_DIST" ]]; then
+        echo "Failed to determine Geth distribution"
+        exit 1
+fi
+
 if [[ -z "$DEPOSIT_CLI" ]]; then
         echo "Failed to determine deposit CLI distribution"
         exit 1
 fi
 
+echo "Downloading Geth from $GETH_DIST"
+curl -L -o geth.tar.gz $GETH_DIST
+
 echo "Downloading deposit CLI from $DEPOSIT_CLI"
 
 curl -L -o deposit-cli.tar.gz $DEPOSIT_CLI
+
+echo "Downloading Geth from $GETH_DIST"
 
 echo "Extracting Geth..."
 
@@ -123,12 +154,29 @@ echo "Extracting deposit CLI..."
 
 tar -xzf deposit-cli.tar.gz
 
+echo "Download Prysm beacon-chain client..."
+
+curl -L -o beacon-chain $PRYSM_BEACON_CHAIN_DIST
+
+echo "Download Prysm prysmctl..."
+
+curl -L -o prysmctl $PRYSM_PRYSMCTL_DIST
+
+echo "Download Prysm validator client..."
+
+curl -L -o validator $PRYSM_VALIDATOR_DIST
+
+chmod +x *
+
 echo "Install  binaries to $NODE_BIN_DIR..."
 
 mv geth $NODE_BIN_DIR
 mv deposit $NODE_BIN_DIR
+mv beacon-chain $NODE_BIN_DIR
+mv prysmctl $NODE_BIN_DIR
+mv validator $NODE_BIN_DIR
 
-if [[ "$NODE_OS"=="darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Removing quarantine attribute from binaries. You may be prompted for your password."
     sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
     echo "Removing quarantine attribute from scripts..."
