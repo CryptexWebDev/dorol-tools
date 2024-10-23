@@ -1,0 +1,1 @@
+~/dorol/scripts/start-node.sh

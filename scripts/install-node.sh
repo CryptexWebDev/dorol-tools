@@ -34,7 +34,8 @@ PRYSM_VALIDATOR_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/downl
 # Prysm validator linux amd64/arm64
 PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-amd64"
 PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-arm64"
-
+# full node boot data
+BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/bootdata.tar.gz"
 
 NODE_OS="unknown"
 NODE_ARCH="unknown"
@@ -166,6 +167,7 @@ echo "Download Prysm validator client..."
 
 curl -L -o validator $PRYSM_VALIDATOR_DIST
 
+chmod 0644 *
 chmod +x *
 
 echo "Install  binaries to $NODE_BIN_DIR..."
@@ -181,4 +183,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
     echo "Removing quarantine attribute from scripts..."
     sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/* || echo "Some script files not need to be removed from quarantine"
+
+
 fi
+
+echo "Software and scripts installed, prepare node for start..."
+
+mkdir -p $NODE_DATA_DIR/node/consensus || echo "Node data dir exists, skip..."
+
+curl -L -o bootdata.tar.gz $BOOT_DATA
+
+tar -xzf bootdata.tar.gz
+
+mv data-prepared/* $NODE_DATA_DIR/node/
+
+echo "Node software and data prepared. Now you can run dorol node with $NODE_SCRIPTS_DIR/start-node.sh"
