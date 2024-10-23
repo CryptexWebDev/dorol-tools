@@ -130,7 +130,7 @@ mv deposit $NODE_BIN_DIR
 
 if [[ "$NODE_OS"=="darwin" ]]; then
     echo "Removing quarantine attribute from binaries. You may be prompted for your password."
-    sudo -s xattr -d com.apple.quarantine NODE_BIN_DIR/*
+    sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
     echo "Removing quarantine attribute from scripts..."
-    sudo -s xattr -d com.apple.quarantine NODE_SCRIPTS_DIR/*
+    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/* || echo "Some script files not need to be removed from quarantine"
 fi
