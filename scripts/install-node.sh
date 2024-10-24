@@ -36,6 +36,7 @@ PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/dow
 PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-arm64"
 # full node boot data
 BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/bootdata.tar.gz"
+SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/scripts.tar.gz"
 
 NODE_OS="unknown"
 NODE_ARCH="unknown"
@@ -195,6 +196,15 @@ echo "Software and scripts installed, prepare node for start..."
 mkdir -p $NODE_DATA_DIR/node/execution || echo "Node data dir exists, skip..."
 mkdir -p $NODE_DATA_DIR/node/consensus/beacondata || echo "Node data dir exists, skip..."
 mkdir -p $NODE_DATA_DIR/node/consensus/validator || echo "Node data dir exists, skip..."
+
+echo "Downloading and prepare node management scripts..."
+curl -L -o scripts.tar.gz $SCRIPTS
+
+tar -xzf scripts.tar.gz
+
+ls -la -R
+
+exit 0
 
 curl -L -o bootdata.tar.gz $BOOT_DATA
 
