@@ -203,6 +203,6 @@ tar -xzf bootdata.tar.gz
 mv data-prepared/config.main.yaml $NODE_DATA_DIR/node/config.yaml
 mv data-prepared/genesis.ssz $NODE_DATA_DIR/node/genesis.ssz
 
-# touch tosaccepted
+touch $NODE_DATA_DIR/node/consensus/beacondata/tosaccepted
 
 echo "Node software and data prepared. Now you can run dorol node with $NODE_SCRIPTS_DIR/start-node.sh"
