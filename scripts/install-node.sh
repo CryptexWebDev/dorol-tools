@@ -17,23 +17,23 @@ GETH_LINUX_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download
 # linux geth arm64
 GETH_LINUX_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/0.1.0/geth-linux-arm64.tar.gz"
 # Prysm beacon chain mac amd64/arm64
-PRYSM_BEACON_CHAIN_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-darwin-amd64"
-PRYSM_BEACON_CHAIN_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-darwin-arm64"
+PRYSM_BEACON_CHAIN_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-darwin-amd64"
+PRYSM_BEACON_CHAIN_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-darwin-arm64"
 # Prysm beacon chain linux amd64/arm64
-PRYSM_BEACON_CHAIN_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-linux-amd64"
-PRYSM_BEACON_CHAIN_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/beacon-chain-v5.1.2-linux-arm64"
+PRYSM_BEACON_CHAIN_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-linux-amd64"
+PRYSM_BEACON_CHAIN_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-linux-arm64"
 # Prysm prysmctl mac amd64/arm64
-PRYSM_PRYSMCTL_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-darwin-amd64"
-PRYSM_PRYSMCTL_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-darwin-arm64"
+PRYSM_PRYSMCTL_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/prysmctl-v5.0.3-darwin-amd64"
+PRYSM_PRYSMCTL_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/prysmctl-v5.0.3-darwin-arm64"
 # Prysm prysmctl linux amd64/arm64
-PRYSM_PRYSMCTL_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-linux-amd64"
-PRYSM_PRYSMCTL_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/prysmctl-v5.1.2-linux-arm64"
+PRYSM_PRYSMCTL_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/prysmctl-v5.0.3-linux-amd64"
+PRYSM_PRYSMCTL_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/prysmctl-v5.0.3-linux-arm64"
 # Prysm validator mac amd64/arm64
-PRYSM_VALIDATOR_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-darwin-amd64"
-PRYSM_VALIDATOR_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-darwin-arm64"
+PRYSM_VALIDATOR_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-darwin-amd64"
+PRYSM_VALIDATOR_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-darwin-arm64"
 # Prysm validator linux amd64/arm64
-PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-amd64"
-PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.1.2/validator-v5.1.2-linux-arm64"
+PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-linux-amd64"
+PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-linux-arm64"
 # full node boot data
 BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/bootdata.tar.gz"
 SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/scripts.tar.gz"

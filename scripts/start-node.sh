@@ -23,7 +23,8 @@ cat <<EOS
 Start dorol execution layer client (geth)...
 
 EOS
-$NODE_BIN_DIR/geth --datadir=$NODE_EXECUTION_DIR >> $NODE_LOGS_DIR/geth.log &
+$NODE_BIN_DIR/geth --datadir=$NODE_EXECUTION_DIR \
+    --authrpc.jwtsecret $NODE_EXECUTION_DIR/jwtsecret >> $NODE_LOGS_DIR/geth.log &
 tail -f $HOME/dorol/logs/geth.log &
 
 cat <<EOS
@@ -46,7 +47,6 @@ $NODE_BIN_DIR/beacon-chain --datadir $NODE_CONSENSUS_DIR/beacondata \
     --accept-terms-of-use \
     --jwt-secret $NODE_EXECUTION_DIR/jwtsecret \
     --minimum-peers-per-subnet 0 \
-    --enable-debug-rpc-endpoints \
     --execution-endpoint $NODE_EXECUTION_DIR/geth.ipc > "$NODE_LOGS_DIR/beacon.log" 2>&1 &
 
 tail -f -n40 $NODE_LOGS_DIR/beacon.log &
