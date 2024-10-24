@@ -179,22 +179,30 @@ mv prysmctl $NODE_BIN_DIR
 mv validator $NODE_BIN_DIR
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+
+    curl -L -o $HOME/Desktop/StartNode.command https://raw.githubusercontent.com/CryptexWebDev/dorol-tools/refs/heads/main/scripts/darwin/startnode.command
+    chmod +x $HOME/Desktop/StartNode.command
     echo "Removing quarantine attribute from binaries. You may be prompted for your password."
     sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
+    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
     echo "Removing quarantine attribute from scripts..."
     sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/* || echo "Some script files not need to be removed from quarantine"
-
 
 fi
 
 echo "Software and scripts installed, prepare node for start..."
 
-mkdir -p $NODE_DATA_DIR/node/consensus || echo "Node data dir exists, skip..."
+mkdir -p $NODE_DATA_DIR/node/execution || echo "Node data dir exists, skip..."
+mkdir -p $NODE_DATA_DIR/node/consensus/beacondata || echo "Node data dir exists, skip..."
+mkdir -p $NODE_DATA_DIR/node/consensus/validator || echo "Node data dir exists, skip..."
 
 curl -L -o bootdata.tar.gz $BOOT_DATA
 
 tar -xzf bootdata.tar.gz
 
-mv data-prepared/* $NODE_DATA_DIR/node/
+mv data-prepared/config.yaml $NODE_DATA_DIR/node/config.yaml
+mv data-prepared/genesis.ssz $NODE_DATA_DIR/node/genesis.ssz
+
+# touch tosaccepted
 
 echo "Node software and data prepared. Now you can run dorol node with $NODE_SCRIPTS_DIR/start-node.sh"
