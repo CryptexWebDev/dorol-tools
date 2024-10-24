@@ -202,9 +202,19 @@ curl -L -o scripts.tar.gz $SCRIPTS
 
 tar -xzf scripts.tar.gz
 
-ls -la -R
+mv scripts/*sh $NODE_SCRIPTS_DIR/
+chmod +x  $NODE_SCRIPTS_DIR/*sh
 
-exit 0
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+    echo "Removing quarantine attribute from scripts..."
+    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/*sh || echo "Some script files not need to be removed from quarantine"
+
+    mv script/darwin/startnode.command $HOME/Desktop/StartNode.command
+    chmod +x $HOME/Desktop/StartNode.command
+    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
+
+fi
 
 curl -L -o bootdata.tar.gz $BOOT_DATA
 
