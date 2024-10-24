@@ -7,7 +7,7 @@ NODE_EXECUTION_DIR="$NODE_DATA_DIR/node/execution"
 NODE_CONSENSUS_DIR="$NODE_DATA_DIR/node/consensus"
 NODE_LOGS_DIR="$HOME/dorol/logs"
 
-BEACON_CONFIG=$NODE_DATA_DIR/node/config.main.yaml
+BEACON_CONFIG=$NODE_DATA_DIR/node/config.yaml
 BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
 
 BOOT_NODE=""

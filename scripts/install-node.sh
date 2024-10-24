@@ -200,7 +200,7 @@ curl -L -o bootdata.tar.gz $BOOT_DATA
 
 tar -xzf bootdata.tar.gz
 
-mv data-prepared/config.yaml $NODE_DATA_DIR/node/config.yaml
+mv data-prepared/config.main.yaml $NODE_DATA_DIR/node/config.yaml
 mv data-prepared/genesis.ssz $NODE_DATA_DIR/node/genesis.ssz
 
 # touch tosaccepted
