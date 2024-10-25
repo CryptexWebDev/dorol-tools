@@ -35,6 +35,7 @@ Start dorol execution layer client (geth)...
 EOS
 $NODE_BIN_DIR/geth --datadir=$NODE_EXECUTION_DIR \
     --authrpc.jwtsecret $NODE_EXECUTION_DIR/jwtsecret >> $NODE_LOGS_DIR/geth.log &
+
 tail -f $HOME/dorol/logs/geth.log &
 
 cat <<EOS
