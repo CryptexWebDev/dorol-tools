@@ -179,17 +179,7 @@ mv beacon-chain $NODE_BIN_DIR
 mv prysmctl $NODE_BIN_DIR
 mv validator $NODE_BIN_DIR
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
 
-    curl -L -o $HOME/Desktop/StartNode.command https://raw.githubusercontent.com/CryptexWebDev/dorol-tools/refs/heads/main/scripts/darwin/startnode.command
-    chmod +x $HOME/Desktop/StartNode.command
-    echo "Removing quarantine attribute from binaries. You may be prompted for your password."
-    sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
-    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
-    echo "Removing quarantine attribute from scripts..."
-    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/* || echo "Some script files not need to be removed from quarantine"
-
-fi
 
 echo "Software and scripts installed, prepare node for start..."
 
@@ -205,16 +195,7 @@ tar -xzf scripts.tar.gz
 mv scripts/*sh $NODE_SCRIPTS_DIR/
 chmod +x  $NODE_SCRIPTS_DIR/*sh
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
 
-    echo "Removing quarantine attribute from scripts..."
-    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/*sh || echo "Some script files not need to be removed from quarantine"
-
-    mv script/darwin/startnode.command $HOME/Desktop/StartNode.command
-    chmod +x $HOME/Desktop/StartNode.command
-    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
-
-fi
 
 curl -L -o bootdata.tar.gz $BOOT_DATA
 
@@ -224,5 +205,22 @@ mv data-prepared/config.main.yaml $NODE_DATA_DIR/node/config.yaml
 mv data-prepared/genesis.ssz $NODE_DATA_DIR/node/genesis.ssz
 
 touch $NODE_DATA_DIR/node/consensus/beacondata/tosaccepted
+if [[ "$OSTYPE" == "darwin"* ]]; then
 
+    curl -L -o $HOME/Desktop/StartNode.command https://raw.githubusercontent.com/CryptexWebDev/dorol-tools/refs/heads/main/scripts/darwin/startnode.command
+    chmod +x $HOME/Desktop/StartNode.command
+    echo "Removing quarantine attribute from binaries. You may be prompted for your password."
+    sudo -s xattr -d com.apple.quarantine $NODE_BIN_DIR/* || echo "Some executable  files not need to be removed from quarantine"
+    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
+    echo "Removing quarantine attribute from scripts..."
+    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/* || echo "Some script files not need to be removed from quarantine"
+
+    echo "Removing quarantine attribute from scripts..."
+    sudo -s xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/*sh || echo "Some script files not need to be removed from quarantine"
+
+    mv script/darwin/startnode.command $HOME/Desktop/StartNode.command
+    chmod +x $HOME/Desktop/StartNode.command
+    sudo -s xattr -d com.apple.quarantine $HOME/Desktop/StartNode.command
+
+fi
 echo "Node software and data prepared. Now you can run dorol node with $NODE_SCRIPTS_DIR/start-node.sh"

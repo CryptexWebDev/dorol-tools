@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "Stopping node..."
 echo " - stop validator..."
 pkill validator || echo "No existing validator processes"
