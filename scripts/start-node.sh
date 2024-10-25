@@ -48,6 +48,7 @@ $NODE_BIN_DIR/beacon-chain --datadir $NODE_CONSENSUS_DIR/beacondata \
     --min-sync-peers 1 \
     --genesis-state $BEACON_GENESIS_SSZ \
     --chain-config-file $BEACON_CONFIG \
+    --contract-deployment-block 0 \
     --bootstrap-node /ip4/51.195.4.133/tcp/13000/p2p/16Uiu2HAmR9d7cK1Vk9tTiPozN3EXUEtYSMHQFoyg1ufTbcpdhDBD \
     --bootstrap-node /ip4/152.228.221.170/tcp/13500/p2p/16Uiu2HAm6WU5qwi9H1Ab1HrvXQCTH6P46muzWzD3A7LLKYz1teL6 \
     --bootstrap-node /ip4/92.222.100.216/tcp/13000/p2p/16Uiu2HAm9yiEt1PuNBVrgHEXdx1FMMMEEabDrCvvxBi9NY28PtM6 \
