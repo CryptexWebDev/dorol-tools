@@ -15,8 +15,8 @@ BOOT_NODE=""
 trap 'echo "Error on line $LINENO"; exit 1' ERR
 # Function to handle the cleanup
 cleanup() {
-    echo "Caught Ctrl+C. Killing active background processes and exiting."
-    kill $(jobs -p)  # Kills all background processes started in this script
+    echo "Caught Ctrl+C. Killing active loger processes."
+    killall tails
     exit
 }
 # Trap the SIGINT signal and call the cleanup function when it's caught
@@ -34,7 +34,7 @@ Start dorol execution layer client (geth)...
 
 EOS
 $NODE_BIN_DIR/geth --datadir=$NODE_EXECUTION_DIR \
-    --authrpc.jwtsecret $NODE_EXECUTION_DIR/jwtsecret >> $NODE_LOGS_DIR/geth.log &
+    --authrpc.jwtsecret $NODE_EXECUTION_DIR/jwtsecret > $NODE_LOGS_DIR/geth.log 2>&1 &
 
 tail -f $HOME/dorol/logs/geth.log &
 
