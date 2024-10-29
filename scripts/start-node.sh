@@ -62,4 +62,4 @@ $NODE_BIN_DIR/beacon-chain --datadir $NODE_CONSENSUS_DIR/beacondata \
     --chain-id 39010 \
     --execution-endpoint $NODE_EXECUTION_DIR/geth.ipc > "$NODE_LOGS_DIR/beacon.log" 2>&1 &
 
-tail -f -n40 $NODE_LOGS_DIR/beacon.log
+tail -f -n40 $NODE_LOGS_DIR/beacon.log &
