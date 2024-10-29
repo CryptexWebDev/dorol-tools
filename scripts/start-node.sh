@@ -14,13 +14,12 @@ BOOT_NODE=""
 
 trap 'echo "Error on line $LINENO"; exit 1' ERR
 # Function to handle the cleanup
-cleanup() {
-    echo "Caught Ctrl+C. Killing active loger processes."
-    killall tails
-    exit
-}
+# cleanup() {
+#     echo "Caught Ctrl+C. Killing active loger processes."
+#     exit
+# }
 # Trap the SIGINT signal and call the cleanup function when it's caught
-trap 'cleanup' SIGINT
+# trap 'cleanup' SIGINT
 
 cat <<EOS
 Start dorol full node...
