@@ -47,7 +47,6 @@ NODE_SCRIPTS_DIR="$HOME/dorol/scripts"
 ARCH=$(uname -m)
 
 TMP_DIR=$(mktemp -d)
-
 cd $TMP_DIR
 
 if test -d "$NODE_BIN_DIR"; then
