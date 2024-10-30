@@ -23,9 +23,6 @@ $(tput setaf 5)Download updates...$(tput sgr0)
 
 "
 
-mv deposit-send $NODE_BIN_DIR/deposit-send
-chmod +x $NODE_BIN_DIR/deposit-send
-
 cd $NODE_SCRIPTS_DIR
 
 curl -L -o validator-prepare.sh $VALIDATOR_PREPARE
