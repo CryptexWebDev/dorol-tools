@@ -23,14 +23,6 @@ $(tput setaf 5)Download updates...$(tput sgr0)
 
 "
 
-curl -L -o scripts.tar.gz $SCRIPTS
-tar -xzf scripts.tar.gz
-mv scripts/*sh $NODE_SCRIPTS_DIR/
-chmod +x  $NODE_SCRIPTS_DIR/*sh
-
-curl -L -o deposit-send.tar.gz $DEPOSIT_SEND
-tar -xzf deposit-send.tar.gz
-
 mv deposit-send $NODE_BIN_DIR/deposit-send
 chmod +x $NODE_BIN_DIR/deposit-send
 

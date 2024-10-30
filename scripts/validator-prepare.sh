@@ -58,6 +58,7 @@ ask_for_confirmation() {
 trap 'cleanup' SIGINT
 
 cd $NODE_BASE_DIR
+
 echo "Validator keys directory found.
 This script can overwrite the existing validator keys!
 Do you wish to overwrite the existing keys?"

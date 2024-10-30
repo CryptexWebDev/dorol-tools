@@ -1,0 +1,11 @@
+.idea
+dorol-tools.iml
+tmp
+scripts/run.sh
+push.sh
+data-prepared
+pack.sh
+bootdata.tar.gz
+scripts.tar.gz
+updates
+updates.tar.gz
