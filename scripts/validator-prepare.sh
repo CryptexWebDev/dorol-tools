@@ -121,7 +121,7 @@ Import Validator keys to your validator client and prepare for run
 $(tput sgr0)
 "
 
-mkdir -p $NODE_DIR/validator || echo "Validator directory exist, skip..."; exit
+mkdir -p $NODE_VALIDATOR_DATA || echo "Validator directory exist, skip..."; exit
 
 $NODE_BIN_DIR/validator \
     --datadir $NODE_VALIDATOR_DATA \
