@@ -77,11 +77,11 @@ cd $TMP_DIR
 
 UPDATES_DIR=$TMP_DIR/updates/$SCRIPTS_VERSION
 
-curl -L -o update.tar.gz $NODE_UPDATE_URL
-tar -xvf update.tar.gz
-rm -rf update.tar.gz
-pwd
-ls -laR
+# curl -L -o update.tar.gz $NODE_UPDATE_URL
+# tar -xvf update.tar.gz
+# rm -rf update.tar.gz
+# pwd
+# ls -laR
 # if [[ -d "$UPDATES_DIR" ]]; then
 #     echo "Updates downloaded successfully."
 #     echo "Applying updates..."
@@ -138,9 +138,6 @@ Now you need make validator deposit.
 
 "
 
-DEPOSIT_ADDRESS_PRIVATE_KEY=$0
-
-$NODE_BIN_DIR/deposit-send --validator-dir $NODE_VALIDATOR_KEYS_DIR \
-    --private-key $DEPOSIT_ADDRESS_PRIVATE_KEY \
-    --geth-endpoint http://localhost:8545 \
+$NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR \
+    --geth-endpoint $NODE_EXECUTION_DIR/geth.ipc \
     --geth-use-socket
