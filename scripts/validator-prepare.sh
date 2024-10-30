@@ -113,10 +113,12 @@ $NODE_BIN_DIR/deposit $MNEMONIC_MODE \
    --chain dorol
 
 echo "
+$(tput setaf 3)$(tput bold)
 ******************************************************************
 Validator keys created successfully.
 Import Validator keys to your validator client and prepare for run
 ******************************************************************
+$(tput sgr0)
 "
 
 mkdir -p $NODE_DIR/validator || echo "Validator directory exist, skip..."; exit
@@ -128,8 +130,17 @@ $NODE_BIN_DIR/validator \
     accounts import --keys-dir $NODE_VALIDATOR_KEYS_DIR
 
 echo "
+
 ******************************************************************
 Validator prepared successfully.
-Now you can run your validator client and make validator deposit.
+Now you need make validator deposit.
 ******************************************************************
+
 "
+
+DEPOSIT_ADDRESS_PRIVATE_KEY=$0
+
+$NODE_BIN_DIR/deposit-send --validator-dir $NODE_VALIDATOR_KEYS_DIR \
+    --private-key $DEPOSIT_ADDRESS_PRIVATE_KEY \
+    --geth-endpoint http://localhost:8545 \
+    --geth-use-socket
