@@ -115,5 +115,5 @@ Now you need make validator deposit.
 "
 
 $NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR \
-    --geth-endpoint $NODE_EXECUTION_DIR/geth.ipc \
-    --geth-use-socket
+    --node-endpoint $NODE_EXECUTION_DIR/geth.ipc \
+    --node-use-socket
