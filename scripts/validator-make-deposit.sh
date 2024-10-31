@@ -28,15 +28,9 @@ NODE_LOGS_DIR="$HOME/dorol/logs"
 BOOT_NODE=""
 
 trap 'echo "Error on line $LINENO"; exit 1' ERR
-# Function to handle the cleanup
-cleanup() {
-    echo "
-Caught Ctrl+C. Exiting."
-    exit
-}
 
 cd $NODE_BASE_DIR
 
-$NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR \
+$NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR/deposit_data-*.json \
     --node-endpoint $NODE_EXECUTION_DIR/geth.ipc \
     --node-use-socket
