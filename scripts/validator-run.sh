@@ -22,5 +22,4 @@ $NODE_BIN_DIR/validator \
     --accept-terms-of-use \
     --suggested-fee-recipient 0xcCa7fD5a2D7DF4D9ad717a14E871C012F85F437c \
     --wallet-dir $NODE_VALIDATOR_WALLET \
-    --web  \
     --chain-config-file $BEACON_CONFIG &
