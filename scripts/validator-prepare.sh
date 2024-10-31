@@ -29,13 +29,7 @@ BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
 
 BOOT_NODE=""
 
-trap 'echo "Error on line $LINENO"; exit 1' ERR
-# Function to handle the cleanup
-cleanup() {
-    echo "
-Caught Ctrl+C. Exiting."
-    exit
-}
+trap 'echo "Error while validator prepare"; exit 1' ERR
 
 ask_for_confirmation() {
     while true
@@ -54,7 +48,7 @@ cd $NODE_BASE_DIR
 echo "Check validator keys at:NODE_VALIDATOR_KEYS_DIR"
 
 if test -d "$NODE_VALIDATOR_KEYS_DIR"; then
-echo "Validator keys directory found.
+    echo "Validator keys directory found.
 This script can overwrite the existing validator keys!
 Do you wish to overwrite the existing keys?"
     ask_for_confirmation
@@ -104,14 +98,16 @@ Validator prepared successfully.
 Now you already to make validator deposit.
 ******************************************************************
 $(tput sgr0)
-Do you want to make a deposit right now?
 "
 
-ask_for_confirmation()
+read -p "Do you want to make a deposit right now?" yn
+case $yn in
+    [Nn] ) exit 0;;
+esac
 
-echo "Validator keys path: $NODE_VALIDATOR_KEYS_DIR"
-echo "Execution endpoint: $NODE_EXECUTION_DIR/geth.ipc"
+echo "Validator keys path: $NODE_VALIDATOR_KEYS_DIR "
+echo "Execution endpoint: $NODE_EXECUTION_DIR/geth.ipc "
 
-$NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR \
+$NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR/deposit_data-*.json \
     --node-endpoint $NODE_EXECUTION_DIR/geth.ipc \
     --node-use-socket

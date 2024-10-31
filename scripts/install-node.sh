@@ -34,6 +34,11 @@ PRYSM_VALIDATOR_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/downl
 # Prysm validator linux amd64/arm64
 PRYSM_VALIDATOR_LINUX_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-linux-amd64"
 PRYSM_VALIDATOR_LINUX_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/validator-v5.0.3-linux-arm64"
+# Deposit send utility
+DEPOSIT_SEND_DARWIN_AMD64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/deposit-send-darwin-amd64.tar.gz"
+DEPOSIT_SEND_MAC_ARM64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/deposit-send-darwin-arm64.tar.gz"
+DEPOSIT_SEND_LINUX_AMD64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/deposit-send-linux-amd64.tar.gz"
+DEPOSIT_SEND_LINUX_ARM64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/deposit-send-linux-arm64.tar.gz"
 # full node boot data
 BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/bootdata.tar.gz"
 SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/scripts.tar.gz"
@@ -95,6 +100,7 @@ PRYSM_PRYSMCTL_DIST=""
 PRYSM_BEACON_CHAIN_DIST=""
 PRYSM_VALIDATOR_DIST=""
 DEPOSIT_CLI=""
+DEPOSIT_SEND_TOOL=""
 
 if [[ "$NODE_OS" == "linux" ]]; then
         if [[ "$NODE_ARCH" == "amd64" ]]; then
@@ -102,11 +108,13 @@ if [[ "$NODE_OS" == "linux" ]]; then
                 PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_LINUX_AMD64
                 PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_LINUX_AMD64
                 PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_LINUX_AMD64
+                DEPOSIT_SEND_TOOL=$DEPOSIT_SEND_LINUX_AMD64
         elif [[ "$NODE_ARCH" == "arm64" ]]; then
                 GETH_DIST=$GETH_LINUX_ARM64
                 PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_LINUX_ARM64
                 PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_LINUX_ARM64
                 PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_LINUX_ARM64
+                DEPOSIT_SEND_TOOL=$DEPOSIT_SEND_LINUX_ARM64
         fi
 elif [[ "$NODE_OS" == "darwin" ]]; then
         if [[ "$NODE_ARCH" == "amd64" ]]; then
@@ -114,11 +122,13 @@ elif [[ "$NODE_OS" == "darwin" ]]; then
                 PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_MAC_AMD64
                 PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_MAC_AMD64
                 PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_MAC_AMD64
+                DEPOSIT_SEND_TOOL=$DEPOSIT_SEND_DARWIN_AMD64
         elif [[ "$NODE_ARCH" == "arm64" ]]; then
                 GETH_DIST=$GETH_MAC_ARM64
                 PRYSM_PRYSMCTL_DIST=$PRYSM_PRYSMCTL_MAC_ARM64
                 PRYSM_BEACON_CHAIN_DIST=$PRYSM_BEACON_CHAIN_MAC_ARM64
                 PRYSM_VALIDATOR_DIST=$PRYSM_VALIDATOR_MAC_ARM64
+                DEPOSIT_SEND_TOOL=$DEPOSIT_SEND_MAC_ARM64
         fi
 fi
 
@@ -155,6 +165,12 @@ echo "Extracting deposit CLI..."
 
 tar -xzf deposit-cli.tar.gz
 
+echo "Download deposit send utility..."
+
+curl -L -o deposit-send.tar.gz $DEPOSIT_SEND_TOOL
+
+tar -xzf deposit-send.tar.gz
+
 echo "Download Prysm beacon-chain client..."
 
 curl -L -o beacon-chain $PRYSM_BEACON_CHAIN_DIST
@@ -177,8 +193,6 @@ mv deposit $NODE_BIN_DIR
 mv beacon-chain $NODE_BIN_DIR
 mv prysmctl $NODE_BIN_DIR
 mv validator $NODE_BIN_DIR
-
-
 
 echo "Software and scripts installed, prepare node for start..."
 
