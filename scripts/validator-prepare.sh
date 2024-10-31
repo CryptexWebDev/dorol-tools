@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap 'echo "Error on line $LINENO"; exit 1' ERR
+
 echo "
 **********************************************************
 *   Prepare validator keys and withdrawal credentials    *
@@ -9,13 +11,14 @@ ATTENTION! This script can overwrite the existing validator keys!
 Please make sure you have a backup of the existing keys before proceeding.
 
 "
-SCRIPTS_VERSION="0.1.0"
+SCRIPTS_VERSION="0.1.0c"
 
 NODE_DATA_DIR="$HOME/.drlnet"
 NODE_BASE_DIR="$HOME/dorol"
 NODE_BIN_DIR="$NODE_BASE_DIR/bin"
 NODE_SCRIPTS_DIR="$HOME/dorol/scripts"
 NODE_VALIDATOR_KEYS_DIR="$NODE_BASE_DIR/validator_keys"
+NODE_VALIDATOR_WALLET_DIR="$NODE_BASE_DIR/validator_wallet"
 NODE_VALIDATOR_DATA="$NODE_DATA_DIR/validator"
 NODE_EXECUTION_DIR="$NODE_DATA_DIR/node/execution"
 NODE_CONSENSUS_DIR="$NODE_DATA_DIR/node/consensus"
@@ -54,47 +57,16 @@ ask_for_confirmation() {
     done
 }
 
-# Trap the SIGINT signal and call the cleanup function when it's caught
-trap 'cleanup' SIGINT
-
 cd $NODE_BASE_DIR
 
+echo "Check validator keys at:NODE_VALIDATOR_KEYS_DIR"
+
+if test -d "$NODE_VALIDATOR_KEYS_DIR"; then
 echo "Validator keys directory found.
 This script can overwrite the existing validator keys!
 Do you wish to overwrite the existing keys?"
-if test -d "$NODE_VALIDATOR_KEYS_DIR"; then
     ask_for_confirmation
 fi
-
-echo "Check scripts updates..."
-
-mkdir $UPDATES_DIR || echo "updates directory already exists, skip"
-
-cd $UPDATES_DIR
-
-TMP_DIR=$(mktemp -d)
-
-cd $TMP_DIR
-
-UPDATES_DIR=$TMP_DIR/updates/$SCRIPTS_VERSION
-
-# curl -L -o update.tar.gz $NODE_UPDATE_URL
-# tar -xvf update.tar.gz
-# rm -rf update.tar.gz
-# pwd
-# ls -laR
-# if [[ -d "$UPDATES_DIR" ]]; then
-#     echo "Updates downloaded successfully."
-#     echo "Applying updates..."
-#     cp -r $UPDATES_DIR/scripts/* $NODE_SCRIPTS_DIR/
-#     chmod +x $NODE_SCRIPTS_DIR/*
-#     echo "Updates applied successfully."
-#     if [[ "$OSTYPE" == "darwin"* ]]; then
-#         echo "Please enter your sudo password to update the scripts."
-#         sudo xattr -d com.apple.quarantine $NODE_SCRIPTS_DIR/*
-#     fi
-#     echo "Scripts updated successfully."
-# fi
 
 echo "Preparing validator keys..."
 
@@ -110,25 +82,28 @@ esac
 mkdir -p $NODE_VALIDATOR_KEYS_DIR || echo "Validator keys directory exists, skip..."
 
 $NODE_BIN_DIR/deposit $MNEMONIC_MODE \
-   --folder $NODE_VALIDATOR_KEYS_DIR \
+   --folder $NODE_BASE_DIR \
    --chain dorol
 
 echo "
 $(tput setaf 3)$(tput bold)
 ******************************************************************
 Validator keys created successfully.
+Keys stored in $NODE_VALIDATOR_KEYS_DIR
 Import Validator keys to your validator client and prepare for run
 ******************************************************************
 $(tput sgr0)
 "
 
-mkdir -p $NODE_VALIDATOR_DATA || echo "Validator directory exist, skip..."; exit
+mkdir -p $NODE_VALIDATOR_DATA || echo "Validator directory exist, skip..."
 
 $NODE_BIN_DIR/validator \
     --datadir $NODE_VALIDATOR_DATA \
-    --accept-terms-of-use \
     --chain-config-file $BEACON_CONFIG \
-    accounts import --keys-dir $NODE_VALIDATOR_KEYS_DIR
+    accounts import \
+    --accept-terms-of-use \
+    --wallet-dir $NODE_VALIDATOR_WALLET_DIR \
+    --keys-dir $NODE_VALIDATOR_KEYS_DIR
 
 echo "
 
