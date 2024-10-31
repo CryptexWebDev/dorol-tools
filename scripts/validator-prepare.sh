@@ -27,8 +27,6 @@ NODE_LOGS_DIR="$HOME/dorol/logs"
 BEACON_CONFIG=$NODE_DATA_DIR/node/config.yaml
 BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
 
-NODE_UPDATE_URL="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/updates.tar.gz"
-
 BOOT_NODE=""
 
 trap 'echo "Error on line $LINENO"; exit 1' ERR
@@ -37,12 +35,6 @@ cleanup() {
     echo "
 Caught Ctrl+C. Exiting."
     exit
-}
-
-restartMe() {
-    echo "Restarting script..."
-    exec $0
-    exit 0
 }
 
 ask_for_confirmation() {
@@ -106,13 +98,19 @@ $NODE_BIN_DIR/validator \
     --keys-dir $NODE_VALIDATOR_KEYS_DIR
 
 echo "
-
+$(tput setaf 3)$(tput bold)
 ******************************************************************
 Validator prepared successfully.
-Now you need make validator deposit.
+Now you already to make validator deposit.
 ******************************************************************
-
+$(tput sgr0)
+Do you want to make a deposit right now?
 "
+
+ask_for_confirmation()
+
+echo "Validator keys path: $NODE_VALIDATOR_KEYS_DIR"
+echo "Execution endpoint: $NODE_EXECUTION_DIR/geth.ipc"
 
 $NODE_BIN_DIR/deposit-send --deposit-data-path $NODE_VALIDATOR_KEYS_DIR \
     --node-endpoint $NODE_EXECUTION_DIR/geth.ipc \
