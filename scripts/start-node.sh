@@ -12,7 +12,7 @@ BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
 
 BOOT_NODE=""
 
-trap 'echo "Error on line $LINENO"; exit 1' ERR
+# trap 'echo "Error on line $LINENO"; exit 1' ERR
 # Function to handle the cleanup
 # cleanup() {
 #     echo "Caught Ctrl+C. Killing active loger processes."
