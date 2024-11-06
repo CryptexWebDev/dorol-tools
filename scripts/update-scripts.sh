@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NODE_TOOLS_VERSION=0.0.1d
+NODE_TOOLS_VERSION=0.0.1f
 
 NODE_DATA_DIR="$HOME/.drlnet"
 NODE_BIN_DIR="$HOME/dorol/bin"

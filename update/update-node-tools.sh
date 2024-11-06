@@ -10,7 +10,7 @@ SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1/scri
 
 echo "
 $(tput setaf 3)$(tput bold)
-Dorol Node Tools Update v0.0.1 $(tput sgr0)
+Dorol Node Tools Update v0.0.1f $(tput sgr0)
 $(tput setaf 5)Download updates...$(tput sgr0)
 
 "
