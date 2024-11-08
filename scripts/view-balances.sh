@@ -41,10 +41,22 @@ else
 fi
 
 installBalanceViewTool() {
-    echo "Downloading validator-balance-view tool for $NODE_OS/$NODE_ARCH"
-    curl -L -o balance-view-tool.tar.gz $GETH_DIST
+    TMP_DIR=$(mktemp -d)
+    cd $TMP_DIR
+    echo "Downloading balances-view tool for $NODE_OS/$NODE_ARCH"
+    curl -L -o  balances-view.tar.gz https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-$NODE_OS-$NODE_ARCH.tar.gz
+    tar -xzf balances-view.tar.gz
+    ls -laR
+    mv balances-view $NODE_BIN_DIR
+    chmod +x $NODE_BIN_DIR/balances-view
+    rm -rf $TMP_DIR
+    cd $NODE_BASE_DIR
 }
 
-if [[ ! -f $NODE_BIN_DIR/validator-balance-view ]]; then
+if [[ ! -f $NODE_BIN_DIR/balances-view ]]; then
     installBalanceViewTool
 fi
+
+cd $NODE_BASE_DIR
+
+$NODE_BIN_DIR/balances-view -keys-dir $NODE_VALIDATOR_KEYS_DIR
