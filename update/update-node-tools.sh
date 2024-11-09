@@ -38,10 +38,19 @@ else
         exit 1
 fi
 
+if [[ "$ARCH" == "x86_64" ]]; then
+       NODE_ARCH="amd64"
+elif [[ "$ARCH" == "arm64" ]]; then
+       NODE_ARCH="arm64"
+else
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+fi
+
 echo "Downloading balances-view tool for $NODE_OS/$NODE_ARCH"
 curl -L -o  balances-view.tar.gz https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-$NODE_OS-$NODE_ARCH.tar.gz
 tar -xzf balances-view.tar.gz
-ls -laR
+ls -la
 mv balances-view $NODE_BIN_DIR
 chmod +x $NODE_BIN_DIR/balances-view
 
