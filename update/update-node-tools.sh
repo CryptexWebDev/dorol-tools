@@ -31,7 +31,9 @@ ARCH=$(uname -m)
 
 if [[ "$OSTYPE" == "Linux"* ]]; then
         NODE_OS="linux"
+        echo "Detected Linux OS"
 elif [[ "$OSTYPE" == "Darwin"* ]]; then
+        echo "Detected MacOS"
         NODE_OS="darwin"
 else
         echo "Unsupported OS: $OSTYPE"
@@ -39,8 +41,10 @@ else
 fi
 
 if [[ "$ARCH" == "x86_64" ]]; then
+       echo "Detected x86_64 architecture"
        NODE_ARCH="amd64"
 elif [[ "$ARCH" == "arm64" ]]; then
+       echo "Detected arm64 architecture"
        NODE_ARCH="arm64"
 else
         echo "Unsupported architecture: $ARCH"
