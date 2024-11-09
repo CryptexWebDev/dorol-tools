@@ -22,4 +22,27 @@ tar -xzf scripts.tar.gz
 mv scripts/*sh $NODE_SCRIPTS_DIR/
 chmod +x  $NODE_SCRIPTS_DIR/*sh
 
+rm -rf $NODE_BIN_DIR/balances-view
+
+NODE_OS="unknown"
+NODE_ARCH="unknown"
+OSTYPE=$(uname -s)
+ARCH=$(uname -m)
+
+if [[ "$OSTYPE" == "Linux"* ]]; then
+        NODE_OS="linux"
+elif [[ "$OSTYPE" == "Darwin"* ]]; then
+        NODE_OS="darwin"
+else
+        echo "Unsupported OS: $OSTYPE"
+        exit 1
+fi
+
+echo "Downloading balances-view tool for $NODE_OS/$NODE_ARCH"
+curl -L -o  balances-view.tar.gz https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-$NODE_OS-$NODE_ARCH.tar.gz
+tar -xzf balances-view.tar.gz
+ls -laR
+mv balances-view $NODE_BIN_DIR
+chmod +x $NODE_BIN_DIR/balances-view
+
 echo "Node tools updated to version $NODE_TOOLS_VERSION"

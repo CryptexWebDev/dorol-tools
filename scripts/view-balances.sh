@@ -21,7 +21,7 @@ NODE_ARCH="unknown"
 OSTYPE=$(uname -s)
 ARCH=$(uname -m)
 
-if [[ "$OSTYPE" == "linux"* ]]; then
+if [[ "$OSTYPE" == "Linux"* ]]; then
         NODE_OS="linux"
 elif [[ "$OSTYPE" == "Darwin"* ]]; then
         NODE_OS="darwin"
