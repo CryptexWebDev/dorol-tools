@@ -15,3 +15,5 @@ NODE_CONSENSUS_DIR="$NODE_DATA_DIR/node/consensus"
 NODE_LOGS_DIR="$NODE_BASE_DIR/logs"
 BEACON_CONFIG=$NODE_DATA_DIR/node/config.yaml
 BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
+
+$NODE_BIN_DIR/prysmctl validator exit --wallet-dir=$NODE_VALIDATOR_WALLET_DIR --beacon-rpc-provider=127.0.0.1:3500
