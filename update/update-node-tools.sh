@@ -54,7 +54,6 @@ fi
 echo "Downloading balances-view tool for $NODE_OS/$NODE_ARCH"
 curl -L -o  balances-view.tar.gz https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-$NODE_OS-$NODE_ARCH.tar.gz
 tar -xzf balances-view.tar.gz
-ls -la
 mv balances-view $NODE_BIN_DIR
 chmod +x $NODE_BIN_DIR/balances-view
 
