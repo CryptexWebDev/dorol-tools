@@ -17,13 +17,15 @@ NODE_LOGS_DIR="$NODE_BASE_DIR/logs"
 BEACON_CONFIG=$NODE_DATA_DIR/node/config.yaml
 BEACON_GENESIS_SSZ=$NODE_DATA_DIR/node/genesis.ssz
 
+trap 'echo "Script stopped by Ctrl+C"; exit 0' SIGINT ;
+
 rm -rf $NODE_VALIDATOR_BLS_TO_EXECUTION_DIR
 
 echo "*******************************************************************************************************************"
 echo "Current withdtraawal credentials:"
 echo "*******************************************************************************************************************"
 
-%NODE_BIN_DIR/balances-view \
+$NODE_BIN_DIR/balances-view \
     --keys-dir $NODE_VALIDATOR_KEYS_DIR \
     --with-withdrawal-credentials
 
