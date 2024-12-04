@@ -49,12 +49,12 @@ $NODE_BIN_DIR/beacon-chain --datadir $NODE_CONSENSUS_DIR/beacondata \
     --genesis-state $BEACON_GENESIS_SSZ \
     --chain-config-file $BEACON_CONFIG \
     --contract-deployment-block 0 \
-    --bootstrap-node /ip4/51.195.4.133/tcp/13000/p2p/16Uiu2HAmR9d7cK1Vk9tTiPozN3EXUEtYSMHQFoyg1ufTbcpdhDBD \
-    --bootstrap-node /ip4/152.228.221.170/tcp/13500/p2p/16Uiu2HAm6WU5qwi9H1Ab1HrvXQCTH6P46muzWzD3A7LLKYz1teL6 \
-    --bootstrap-node /ip4/92.222.100.216/tcp/13000/p2p/16Uiu2HAm9yiEt1PuNBVrgHEXdx1FMMMEEabDrCvvxBi9NY28PtM6 \
-    --bootstrap-node enr:-MK4QKmKrWzxIGfN7JB0nQMc0iPay5nHkZhc6pfxVCd3SdzfUs91nDeX70VvE6_sRNBwR6yBx0_WYPuKBRERFWsIOXiGAZJ4obMrh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDZiKItIAAAkwAdBAAAAAAAgmlkgnY0gmlwhFzeZNiJc2VjcDI1NmsxoQLYOMIlO4_ghJKH8X1AqQSd0URYMjuPLNKfb0Ajv4LzeYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A \
-    --bootstrap-node enr:-MK4QKYfQ4xP0ikHUVvY_TmSQeT3bWVMi5W4T1U_gJ6O6c5QLAWqWHrbvDdCY1fgNibuVXMPKwpfsmfbRqRaGchbYPaGAZJ4Trhsh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDZiKItIAAAkwAdBAAAAAAAgmlkgnY0gmlwhDPDBIWJc2VjcDI1NmsxoQO5ohM6UOrMWuy48C0zdZQUByCVy-RA5k0XXAPzyfB6oIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A \
-    --bootstrap-node enr:-MK4QOezoK5ka-6queKbCE3IAgnPbJ-uYwjagRl4Hdl-FfF1ZJEQaq60YZ0_LQYsfiv0rhgA19nD5SFXNM9MGcZiIvKGAZJ4iK0Xh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDZiKItIAAAkwAdBAAAAAAAgmlkgnY0gmlwhJjk3aqJc2VjcDI1NmsxoQKkqwJ_h__E7v2h2X4sXYrbNWx9lPCC-LDDvh03JBvw34hzeW5jbmV0cwCDdGNwgjS8g3VkcIIw1A \
+    --bootstrap-node /ip4/57.129.75.190/tcp/13000/p2p/16Uiu2HAmTPNx1UQVNNSV4tYaw8aUk6KTHmV28xhpWFcFSGxaxJQk \
+    --bootstrap-node /ip4/57.129.75.192/tcp/13000/p2p/16Uiu2HAmUzJ7Rk2SdnygJ7jKg5z6pG1oFxLdSXUn5pM9vv3dyXRJ \
+    --bootstrap-node /ip4/57.129.75.191/tcp/13000/p2p/16Uiu2HAkxhy1FSEH3QUCYUmtz22jvqXr4QJWats1XuUbFG3B3hR4 \
+    --bootstrap-node enr:-KC4QFgw_PBTQ0AzBEms_cjtPgWV7UWdYgEWtfVazKLTtNmSErGh5Wiw0czr_xhuXivN28D-PYnpbiJIvMhVlaY16gqGAZOISr2Ug2V0aMvKhAJMDnKEaHYOgYJpZIJ2NIJpcIQ5gUu-iXNlY3AyNTZrMaECfV8amfH86UABJzJ6pL3WxHLIPn8ZVB-dafSmQChmVXyEc25hcMCDdGNwgnZf \
+    --bootstrap-node enr:-KC4QNOpbbdhslmwghcAlgaM9r2WnY8KB4K0XlvWQjybO91sAS5v8nXCRFs3pzMntVmm1cI5udm07bL1n2lemjaxuMSGAZOIY6DHg2V0aMvKhAJMDnKEaHYOgYJpZIJ2NIJpcIQ5gUvAiXNlY3AyNTZrMaECH-kFpmsSLq4GTENMRVzgp1pMDl-B7thWHgYDl4zkZ9uEc25hcMCDdGNwgnZf \
+    --bootstrap-node enr:-KC4QAPkP_Zq3DQskChLZuEmgBgSY3Y5PQ0yqG66ghIaGHypAKhtgaG27tlLNvmAS4jKYfJeaKGhFThthyNgGHlLhfiGAZOIdscPg2V0aMvKhAJMDnKEaHYOgYJpZIJ2NIJpcIQ5gUu_iXNlY3AyNTZrMaEDCjvqKC5BNx-mxtg9NjkZEHDKN9_aBLrlDcPLFbt_-0KEc25hcMCDdGNwgnZf \
     --accept-terms-of-use \
     --suggested-fee-recipient 0xcCa7fD5a2D7DF4D9ad717a14E871C012F85F437c \
     --jwt-secret $NODE_EXECUTION_DIR/jwtsecret \
