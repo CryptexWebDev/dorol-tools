@@ -190,6 +190,7 @@ echo "Install  binaries to $NODE_BIN_DIR..."
 
 mv geth $NODE_BIN_DIR
 mv deposit $NODE_BIN_DIR
+mv deposit-send $NODE_BIN_DIR
 mv beacon-chain $NODE_BIN_DIR
 mv prysmctl $NODE_BIN_DIR
 mv validator $NODE_BIN_DIR
