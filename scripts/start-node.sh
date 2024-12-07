@@ -56,7 +56,7 @@ $NODE_BIN_DIR/beacon-chain --datadir $NODE_CONSENSUS_DIR/beacondata \
     --bootstrap-node enr:-MK4QCoTqxv9lvKmMMDKBFepvhHoF52ryDCmLaaoIxmXgAZ6UAzH9kX041ur40SuAZSvxMatkrmXuDi9kC4zlpwEyFmGAZOIY-clh2F0dG5ldHOIAAAAAAADAACEZXRoMpDZiKItIAAAkwAdBAAAAAAAgmlkgnY0gmlwhDmBS8CJc2VjcDI1NmsxoQPyrRvN9nyc_EPfkMSAd9PI-wgpDWXpj5sVaQrRM0A9uYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A \
     --bootstrap-node enr:-MK4QP9LXocFWcxPy6ToNw9tglwRZ_VsK8Oi9cifxk6QPb5adN95R6Sd6LiohzeMtPSIDQ1cwUzNMeXwLRfUGk7hM3qGAZOIdxkTh2F0dG5ldHOIAAAAAABgAACEZXRoMpDZiKItIAAAkwAdBAAAAAAAgmlkgnY0gmlwhDmBS7-Jc2VjcDI1NmsxoQIwv5qkkNimBbyMCBmPm4dbc1pXW1stcJ7z22NRAe6GA4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A \
     --accept-terms-of-use \
-    --suggested-fee-recipient 0xcCa7fD5a2D7DF4D9ad717a14E871C012F85F437c \
+    --suggested-fee-recipient 0x76DEe791acb14705c7cEB1536877867eaE6ea1D0 \
     --jwt-secret $NODE_EXECUTION_DIR/jwtsecret \
     --minimum-peers-per-subnet 0 \
     --chain-id 39010 \

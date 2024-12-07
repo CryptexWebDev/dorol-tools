@@ -23,7 +23,7 @@ echo $validatorPassword  > $NODE_VALIDATOR_WALLET_DIR/wallet-tmp-password.txt
 $NODE_BIN_DIR/validator \
     --datadir $NODE_VALIDATOR_DATA \
     --accept-terms-of-use \
-    --suggested-fee-recipient 0xcCa7fD5a2D7DF4D9ad717a14E871C012F85F437c \
+    --suggested-fee-recipient 0x76DEe791acb14705c7cEB1536877867eaE6ea1D0 \
     --wallet-dir $NODE_VALIDATOR_WALLET_DIR \
      --wallet-password-file $NODE_VALIDATOR_WALLET_DIR/wallet-tmp-password.txt \
     --chain-config-file $BEACON_CONFIG & > $NODE_LOGS_DIR/validator.log 2>&1
