@@ -9,13 +9,13 @@ DEPOSIT_CLI_MAC="https://github.com/CryptexWebDev/staking-deposit-cli/releases/d
 DEPOSIT_CLI_LINUX="https://github.com/CryptexWebDev/staking-deposit-cli/releases/download/2.7.0/deposit-cli-amd64-linux.tgz"
 # TODO apple arm64 deposit cli
 # apple/mac geth amd64
-GETH_MAC_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0/geth-darwin-amd64.tar.gz"
+GETH_MAC_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0.0/geth-darwin-amd64.tar.gz"
 # apple/mac geth arm64
-GETH_MAC_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0/geth-darwin-arm64.tar.gz"
+GETH_MAC_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0.0/geth-darwin-arm64.tar.gz"
 # linux geth amd64
-GETH_LINUX_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0/geth-linux-amd64.tar.gz"
+GETH_LINUX_AMD64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0.0/geth-linux-amd64.tar.gz"
 # linux geth arm64
-GETH_LINUX_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0/geth-linux-arm64.tar.gz"
+GETH_LINUX_ARM64="https://github.com/CryptexWebDev/Dorol-Chain/releases/download/1.0.0/geth-linux-arm64.tar.gz"
 # Prysm beacon chain mac amd64/arm64
 PRYSM_BEACON_CHAIN_MAC_AMD64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-darwin-amd64"
 PRYSM_BEACON_CHAIN_MAC_ARM64="https://github.com/prysmaticlabs/prysm/releases/download/v5.0.3/beacon-chain-v5.0.3-darwin-arm64"
@@ -47,8 +47,8 @@ BALANCES_VIEW_MAC_ARM64="https://github.com/CryptexWebDev/Deposit-Send/releases/
 BALANCES_VIEW_LINUX_AMD64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-linux-amd64.tar.gz"
 BALANCES_VIEW_LINUX_ARM64="https://github.com/CryptexWebDev/Deposit-Send/releases/download/0.0.1/balances-view-linux-arm64.tar.gz"
 # full node boot data
-BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/1.0/bootdata.tar.gz"
-SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/1.0/scripts.tar.gz"
+BOOT_DATA="https://github.com/CryptexWebDev/dorol-tools/releases/download/1.0.0/bootdata.tar.gz"
+SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/1.0.0/scripts.tar.gz"
 
 NODE_OS="unknown"
 NODE_ARCH="unknown"

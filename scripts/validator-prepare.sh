@@ -11,7 +11,7 @@ ATTENTION! This script can overwrite the existing validator keys!
 Please make sure you have a backup of the existing keys before proceeding.
 
 "
-SCRIPTS_VERSION="0.1.0c"
+SCRIPTS_VERSION="1.0.0"
 
 NODE_DATA_DIR="$HOME/.drlnet"
 NODE_BASE_DIR="$HOME/dorol"
