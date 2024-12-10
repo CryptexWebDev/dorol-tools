@@ -6,7 +6,7 @@ NODE_DATA_DIR="$HOME/.drlnet"
 NODE_BIN_DIR="$HOME/dorol/bin"
 NODE_SCRIPTS_DIR="$HOME/dorol/scripts"
 
-SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/0.1.1/scripts.tar.gz"
+SCRIPTS="https://github.com/CryptexWebDev/dorol-tools/releases/download/1.0/scripts.tar.gz"
 
 echo "
 $(tput setaf 3)$(tput bold)
