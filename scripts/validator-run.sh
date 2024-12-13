@@ -26,7 +26,7 @@ $NODE_BIN_DIR/validator \
     --suggested-fee-recipient 0x76DEe791acb14705c7cEB1536877867eaE6ea1D0 \
     --wallet-dir $NODE_VALIDATOR_WALLET_DIR \
      --wallet-password-file $NODE_VALIDATOR_WALLET_DIR/wallet-tmp-password.txt \
-    --chain-config-file $BEACON_CONFIG & > $NODE_LOGS_DIR/validator.log 2>&1
+    --chain-config-file $BEACON_CONFIG > $NODE_LOGS_DIR/validator.log 2>&1 &
 
 tail -f -n40 $NODE_LOGS_DIR/validator.log &
 
